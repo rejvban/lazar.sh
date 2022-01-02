@@ -1,6 +1,6 @@
 import { Post } from 'components/post';
 
-import { BlogContainer } from './index.styled';
+import { BlogContainer } from 'styles/blog.styled';
 
 import { getPosts } from 'lib/api';
 

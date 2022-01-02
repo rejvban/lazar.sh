@@ -1,8 +1,6 @@
-import { createClient, Locale } from 'contentful';
-import { parsePage } from './pageParser';
+import { createClient } from 'contentful';
 
-// Types
-import type { TypePost, TypePostFields } from './types';
+import type { TypePostFields } from './types';
 
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID || '',
