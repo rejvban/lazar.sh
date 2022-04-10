@@ -1,7 +1,11 @@
 import { Header } from "./header";
 import { LayoutContainer } from "./layout.styled"
 
-const Layout: React.FC = ({children}) => {
+export interface LayoutProps {
+    children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({children}) => {
 
     return (
         <LayoutContainer>

@@ -1,8 +1,42 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript,  } from 'next/document'
 
-const Document = () => {
-  return (
-    <Html>
+import { ServerStyleSheet } from 'styled-components';
+
+import type {DocumentContext, DocumentInitialProps} from 'next/document';
+
+class MyDocument extends Document {
+  static async getInitialProps(
+    ctx: DocumentContext,
+  ): Promise<DocumentInitialProps> {
+    const sheet = new ServerStyleSheet();
+
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ) as any,
+      };
+    } finally {
+      sheet.seal();
+    }
+  }
+
+  render() {
+    return (<Html>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -12,8 +46,8 @@ const Document = () => {
         <Main />
         <NextScript />
       </body>
-    </Html>
-  )
+    </Html>)
+  }
 }
 
-export default Document;
+export default MyDocument;
