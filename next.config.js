@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  redirects: async () => [
-    {
-      source: '/',
-      destination: '/blog',
-      permanent: false,
-    },
-  ],
+  i18n: {
+    locales: ['en', 'sr'],
+    defaultLocale: 'en',
+    localeDetection: false,
+  },
 };
 
 module.exports = nextConfig;

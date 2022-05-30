@@ -1,6 +1,10 @@
-import type { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
+
+import type { GetStaticProps, NextPage } from 'next';
 
 const ErrorNotFound: NextPage = () => {
+  const t = useTranslations('404');
+
   return (
     <div className="m-auto flex flex-col items-start justify-start md:mt-24 md:flex-row md:items-center md:justify-center md:space-x-6">
       <div className="space-x-2 pt-6 pb-8 md:space-y-5">
@@ -10,12 +14,22 @@ const ErrorNotFound: NextPage = () => {
       </div>
       <div className="max-w-md">
         <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
-          Oops! There was an issue with the page you requested!
+          {t('message')}
         </p>
-        <p className="mb-4">Try again or go back to the homepage.</p>
+        <p className="mb-4">{t('advice')}</p>
       </div>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = ({ locale }) => {
+  return {
+    props: {
+      messages: {
+        ...require(`../messages/${locale}.json`),
+      },
+    },
+  };
 };
 
 export default ErrorNotFound;

@@ -1,0 +1,9 @@
+{
+  "Header": {
+    "blog": "Blog"
+  },
+  "404": {
+    "message": "Oops! There was an issue with the page you requested!",
+    "advice": "Try again or go back to the homepage."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "Header": {
+    "blog": "Blog"
+  },
+  "404": {
+    "message": "Opala! Čini se da stranica kojoj pokušavaš da pristupiš ne postoji!",
+    "advice": "Pokušaj ponovo ili se vrati na početnu."
+  }
+}

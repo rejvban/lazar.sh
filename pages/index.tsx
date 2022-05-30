@@ -1,11 +1,17 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </div>
-  );
+  return <div className="h-full"></div>;
+};
+
+export const getStaticProps: GetStaticProps = ({ locale }) => {
+  return {
+    props: {
+      messages: {
+        ...require(`../messages/${locale}.json`),
+      },
+    },
+  };
 };
 
 export default Home;
