@@ -7,10 +7,10 @@ interface LocaleButtonProps {
 }
 
 const LocaleButton: React.FC<LocaleButtonProps> = ({ locale }) => {
-  const { locale: currentLocale, route } = useRouter();
+  const { locale: currentLocale, pathname, query } = useRouter();
 
   return (
-    <Link href={route} locale={locale}>
+    <Link href={{ pathname, query }} locale={locale}>
       <span
         className={clx('text-xs', 'cursor-pointer', 'uppercase', {
           'font-semibold': currentLocale === locale,

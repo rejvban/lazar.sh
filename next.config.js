@@ -6,6 +6,13 @@ const nextConfig = {
     defaultLocale: 'en',
     localeDetection: false,
   },
+  redirects: async () => [
+    {
+      source: '/',
+      destination: '/blog',
+      permanent: false,
+    },
+  ],
 };
 
 module.exports = nextConfig;
